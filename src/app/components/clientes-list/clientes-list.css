@@ -1,0 +1,36 @@
+.contenedor {
+    display: flex;
+    gap: 20px;
+    padding: 20px
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    width: 300px
+}
+
+.listado {
+    flex: 1
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 6px;
+    text-align: left
+}
+
+tbody tr {
+    cursor: pointer
+}
+
+.close {
+    background: none;
+    border: none;
+    font-size: 1.5rem
+}

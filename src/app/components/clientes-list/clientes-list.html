@@ -1,0 +1,87 @@
+<div class="contenedor">
+
+    <aside class="formulario">
+        <h2>New Client</h2>
+
+        <label>Name and last name:</label>
+        <input #nombreInput [(ngModel)]="fullname" placeholder="Ej: Juan Pérez">
+
+        <label>Address:</label>
+        <input [(ngModel)]="address" placeholder="Ej: Av. Colón 1234">
+
+        <label>Phone:</label>
+        <input [(ngModel)]="phone" placeholder="Ej: 223 555-1234">
+
+        <label>Water Bottles:</label>
+        <input type="number" min="1" [(ngModel)]="waterbottle">
+
+        <label>Delivery Day:</label>
+        <select [(ngModel)]="deliveryday">
+            <option value="">Select a day</option>
+            <option *ngFor="let dia of dias" [value]="dia">{{ dia }}</option>
+        </select>
+
+        <label>Description (optional):</label>
+        <textarea [(ngModel)]="description" placeholder="Ej: Es un PH, está en el 2° piso, no funciona el timbre"></textarea>
+
+        <button (click)="add()">ADD CLIENT</button>
+    </aside>
+
+    <section class="listado">
+        <h2>Registered Clients</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name and Last Name</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Water Bottles</th>
+                    <th>Delivery Day</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cliente of clienteList" (click)="view(see, cliente)">
+                    <td>{{ cliente.id }}</td>
+                    <td>{{ cliente.fullname }}</td>
+                    <td>{{ cliente.address }}</td>
+                    <td>{{ cliente.phone }}</td>
+                    <td>{{ cliente.waterbottle }}</td>
+                    <td>{{ cliente.deliveryday }}</td>
+                    <td>{{ cliente.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</div>
+
+<ng-template #see let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">Client Details</h5>
+        <button class="close ms-auto" aria-label="Close" (click)="modal.dismiss()"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body">
+        <label>ID:</label>
+        <input class="form-control" [(ngModel)]="id2" disabled>
+        <label>Name and Last Name:</label>
+        <input class="form-control" [(ngModel)]="fullname2">
+        <label>Address:</label>
+        <input class="form-control" [(ngModel)]="address2">
+        <label>Phone:</label>
+        <input class="form-control" [(ngModel)]="phone2">
+        <label>Water Bottles:</label>
+        <input class="form-control" type="number" min="1" [(ngModel)]="waterbottle2">
+        <label>Delivery Day:</label>
+        <select class="form-select" [(ngModel)]="deliveryday2">
+            <option *ngFor="let dia of dias" [value]="dia">{{ dia }}</option>
+        </select>
+        <label>Description (optional):</label>
+        <textarea class="form-control" [(ngModel)]="description2"></textarea>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" (click)="modal.close('delete')">DELETE</button>
+        <button class="btn btn-primary" (click)="modal.close('update')">UPDATE</button>
+    </div>
+</ng-template>
