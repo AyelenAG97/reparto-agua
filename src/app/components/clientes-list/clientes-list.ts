@@ -38,7 +38,7 @@ export class ClientesList implements OnInit {
     this.getAll()
   }
 
-  // 1. Obtener y mostrar un listado de todos los objetos
+
   getAll() {
     this.clientesService.getAll().subscribe(response => {
       this.clienteList = response
@@ -49,7 +49,6 @@ export class ClientesList implements OnInit {
     })
   }
 
-  // 3. Cargar todos los datos y agregar un nuevo objeto
   add() {
     if (this.fullname.trim() !== '' && this.address.trim() !== '' && this.phone.trim() !== '' &&
       this.waterbottle > 0 && this.deliveryday !== '') {
@@ -71,7 +70,6 @@ export class ClientesList implements OnInit {
     }
   }
 
-  // 2. Obtener y mostrar los datos de un objeto al hacer click en la tabla
   view(see: any, cliente: Cliente) {
     this.id2 = cliente.id
     this.fullname2 = cliente.fullname
@@ -91,7 +89,6 @@ export class ClientesList implements OnInit {
     })
   }
 
-  // 4. A la opción 2, agregarle la funcionalidad para actualizar los datos de un objeto
   update() {
     if (this.fullname2.trim() !== '' && this.address2.trim() !== '' && this.phone2.trim() !== '' &&
       this.waterbottle2 > 0 && this.deliveryday2 !== '') {
@@ -114,7 +111,6 @@ export class ClientesList implements OnInit {
     }
   }
 
-  // 5. A la opción 2, agregarle la funcionalidad para dar de baja un objeto
   delete(id: string) {
     this.clientesService.delete(id).subscribe(() => {
       this.getAll()
